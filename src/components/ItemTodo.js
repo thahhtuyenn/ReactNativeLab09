@@ -7,15 +7,15 @@ import {
     TextInput,
 } from "react-native";
 import axios from "axios";
-export const ItemTodo = ({ todo, updateStatus, updateTodo}) => {
+export const ItemTodo = ({ todo, updateTodo}) => {
     return (
         <View style={styles.item}>
             <TouchableOpacity
-                onPress={() => { updateStatus(todo.id) }}
+                onPress={() => {  }}
             >
                 <Image source={require("../../assets/img/icon-check.png")} style={{ marginHorizontal: 10 }} />
             </TouchableOpacity> 
-            <Text style={styles.textItem}> {todo.name} </Text>
+            <Text style={styles.textItem}> {todo.title} </Text>
             <TouchableOpacity 
             onPress={() => {updateTodo()}}
             >

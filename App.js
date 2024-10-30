@@ -3,11 +3,14 @@ import { StyleSheet, Text, View } from "react-native";
 import { DemoCrud } from "./src/pages/DemoCrud";
 import { AppNavigation } from "./src/navigations/AppNavigation";
 import react from 'react'
+import { Provider } from "react-redux";
+import store from "./src/store";
+
 export default function App() {
   return (
-    <View style={[styles.container, ]} >
-      <AppNavigation />
-    </View>
+    <Provider store={store}>
+        <AppNavigation />
+    </Provider>
   );
 }
 

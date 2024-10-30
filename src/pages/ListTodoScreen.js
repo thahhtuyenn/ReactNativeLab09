@@ -12,31 +12,36 @@ import axios from "axios";
 import { ItemTodo } from "../components/ItemTodo";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useData from "../hook/useData";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTodos } from "../todoSlice";
 
 
 
 export const ListTodoScreen = ({ navigation, route }) => {
   const { user } = route.params;
 
-  const { todos, setTodos, searchTodo, updateStatus, search, setSearch, fetchData } = useData("https://66f38c9f71c84d8058790dec.mockapi.io/crudapi");
+  const [search, setSearch] = useState("");
+  const todos = useSelector((state) => state.todos.value)
+  const dispatch = useDispatch();
+  // const { todos, setTodos, searchTodo, updateStatus, fetchData } = useData("https://66f38c9f71c84d8058790dec.mockapi.io/crudapi");
 
   useEffect(() => {
-    fetchData();
+    dispatch(fetchTodos());
+
   }, []);
 
-  useEffect(() => {
-    if (search === "") {
-      fetchData();
-    } else {
-      searchTodo();
-    }
-  }, [search])
+  // useEffect(() => {
+  //   if (search === "") {
+  //     fetchData();
+  //   } else {
+  //     searchTodo();
+  //   }
+  // }, [search])
 
-  useEffect(() => {
-    fetchData()
-  }, [route.params?.action])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [route.params?.action])
 
-useEffect(() => {}, [])
 
 
   return (
@@ -88,13 +93,13 @@ useEffect(() => {}, [])
           data={todos}
           renderItem={({ item }) => {
             return (
-              <ItemTodo todo={item} updateStatus={updateStatus} updateTodo={() => {navigation.navigate("AddToDoScreen", {user: user, itemUpdate: item, action: "update"})}} />
+              <ItemTodo todo={item} updateTodo={() => { navigation.navigate("AddToDoScreen", { user: user, itemUpdate: item, action: "update" }) }} />
             )
           }}
         />
       </View>
       <View style={{ flex: 0.5, margin: '20' }}>
-        <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => { navigation.navigate("AddToDoScreen", {user: user, action: "add"}) }}>
+        <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => { navigation.navigate("AddToDoScreen", { user: user, action: "add" }) }}>
           <Image source={require('../../assets/img/icon-add.png')} />
         </TouchableOpacity>
       </View>
