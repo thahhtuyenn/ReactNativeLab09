@@ -7,13 +7,18 @@ import { Provider } from "react-redux";
 // import store from "./src/reduxToolkit/store";
 import store from "./src/reduxSaga/store"
 import { AppNavigationSaga } from "./src/navigations/AppNavigationSaga";
+import { AppNavigationRecoil } from "./src/navigations/AppNavigationRecoil";
+import { RecoilRoot } from 'recoil';
 
 export default function App() {
   return (
-    <Provider store={store}>
-        {/* <AppNavigation /> */}
-        <AppNavigationSaga />
-    </Provider>
+    // <Provider store={store}>
+    //     {/* <AppNavigation /> */}
+    //     {/* <AppNavigationSaga /> */}
+    // </Provider>
+    <RecoilRoot>
+      <AppNavigationRecoil />
+    </RecoilRoot>
   );
 }
 
