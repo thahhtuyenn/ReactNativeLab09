@@ -4,7 +4,7 @@ import { FETCH_TODOS, setTodos } from './todoAction';
 
 function* fetchTodosSaga() {
   try {
-    const response = yield call(axios.get, 'https://66f38c9f71c84d8058790dec.mockapi.io/crudapi');
+    const response = yield call(axios.get, 'https://6457b5721a4c152cf98861de.mockapi.io/api/ck/todos');
     yield put(setTodos(response.data));
   } catch (error) {
     console.error(error);

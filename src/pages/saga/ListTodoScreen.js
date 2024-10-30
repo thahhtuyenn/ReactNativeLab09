@@ -13,7 +13,7 @@ import { ItemTodo } from "../../components/ItemTodo";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useData from "../../hook/useData";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTodos } from "../../reduxToolkit/todoSlice";
+import { fetchTodos } from "../../reduxSaga/todoAction";
 
 
 
@@ -23,7 +23,7 @@ export const ListTodoScreen = ({ navigation, route }) => {
   const [search, setSearch] = useState("");
 
   //redux-toolkit
-  const todos = useSelector((state) => state.todos.value)
+  const todos = useSelector((state) => state.todos.todos)
   const dispatch = useDispatch();
   // const { todos, setTodos, searchTodo, updateStatus, fetchData } = useData("https://66f38c9f71c84d8058790dec.mockapi.io/crudapi");
 
@@ -31,7 +31,7 @@ export const ListTodoScreen = ({ navigation, route }) => {
   useEffect(() => {
     dispatch(fetchTodos());
 
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
   //   if (search === "") {
