@@ -4,12 +4,14 @@ import { DemoCrud } from "./src/pages/DemoCrud";
 import { AppNavigation } from "./src/navigations/AppNavigation";
 import react from 'react'
 import { Provider } from "react-redux";
-import store from "./src/store";
+import store from "./src/reduxToolkit/store";
+import { AppNavigationSaga } from "./src/navigations/AppNavigationSaga";
 
 export default function App() {
   return (
     <Provider store={store}>
-        <AppNavigation />
+        {/* <AppNavigation /> */}
+        <AppNavigationSaga />
     </Provider>
   );
 }

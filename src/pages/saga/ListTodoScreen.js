@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ItemTodo } from "../components/ItemTodo";
+import { ItemTodo } from "../../components/ItemTodo";
 import { SafeAreaView } from "react-native-safe-area-context";
-import useData from "../hook/useData";
+import useData from "../../hook/useData";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTodos } from "../reduxToolkit/todoSlice";
+import { fetchTodos } from "../../reduxToolkit/todoSlice";
 
 
 
@@ -53,10 +53,10 @@ export const ListTodoScreen = ({ navigation, route }) => {
         <View style={{ flex: 2, flexDirection: 'row', justifyContent: "space-between", alignItems: "center", }}>
           <TouchableOpacity style={{ marginBottom: 20, marginLeft: 10 }}
             onPress={() => { navigation.goBack() }}>
-            <Image source={require("../../assets/img/icon-back.png")} />
+            <Image source={require("../../../assets/img/icon-back.png")} />
           </TouchableOpacity>
           <View style={{ flexDirection: "row", width: "60%", }}>
-            <Image source={require("../../assets/img/avt.png")} />
+            <Image source={require("../../../assets/img/avt.png")} />
             <View style={{ marginHorizontal: 10 }}>
               <Text style={{
                 color: "#171A1F",
@@ -77,7 +77,7 @@ export const ListTodoScreen = ({ navigation, route }) => {
               onPress={() => searchTodo()}
             >
               <Image
-                source={require("../../assets/img/icon-search.png")}
+                source={require("../../../assets/img/icon-search.png")}
                 style={{ marginHorizontal: 10 }}
               />
             </TouchableOpacity>
@@ -103,7 +103,7 @@ export const ListTodoScreen = ({ navigation, route }) => {
       </View>
       <View style={{ flex: 0.5, margin: '20' }}>
         <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => { navigation.navigate("AddToDoScreen", { user: user, action: "add" }) }}>
-          <Image source={require('../../assets/img/icon-add.png')} />
+          <Image source={require('../../../assets/img/icon-add.png')} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
